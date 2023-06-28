@@ -4,9 +4,10 @@ from setuptools import find_packages, setup
 def get_requirments():
     requirements:list(str) = []
     with open('requirements.txt', 'r') as f:
-        reqContent = f.readline()
+        reqContent = f.readlines()
         for line in reqContent:
-            requirements.append(line.strip())
+            if line != '-e .' :
+                requirements.append(line)
     return requirements
 
 setup(
